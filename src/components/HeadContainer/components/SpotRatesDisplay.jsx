@@ -52,7 +52,7 @@ const SpotRatesDisplay = ({ gold, displayBidOrBuy }) => {
                         </div>
 
                         <div className="flex items-center justify-center gap-1 mt-1 text-red">
-                            <span className="text-sm 2xl:text-lg">▼</span>
+                            <span className="text-base 2xl:text-xl">▼</span>
                             <span className="ml-1 text-sm 2xl:text-lg text-white">{formatGoldPrice(gold?.cur?.lowPrice)}</span>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ const SpotRatesDisplay = ({ gold, displayBidOrBuy }) => {
                         </div>
 
                         <div className="flex items-center justify-center gap-1 mt-1 text-blue">
-                            <span className="text-sm 2xl:text-lg">▲</span>
+                            <span className="text-base 2xl:text-xl">▲</span>
                             <span className="ml-1 text-sm 2xl:text-lg text-white">{formatGoldPrice(gold?.cur?.highPrice)}</span>
                         </div>
                     </div>
