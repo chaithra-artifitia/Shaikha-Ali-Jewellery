@@ -14,6 +14,10 @@ const Home = () => {
         cur: { ask: 0, bid: 0, highPrice: 0, lowPrice: 0 },
         pre: { ask: 0, bid: 0, highPrice: 0, lowPrice: 0 },
     });
+    const [silver, setSilver] = useState({
+        cur: { ask: 0, bid: 0, highPrice: 0, lowPrice: 0 },
+        pre: { ask: 0, bid: 0, highPrice: 0, lowPrice: 0 },
+    });
 
 
     const { socket } = useSocketConnection();
@@ -33,7 +37,11 @@ const Home = () => {
                 return { cur: data.data, pre: e.cur };
             });
         });
-
+        socket.on("silver-rate-change", (data) => {
+            setSilver((e) => {
+                return { cur: data.data, pre: e.cur };
+            });
+        });
 
     }, [socket]);
 
@@ -64,7 +72,13 @@ const Home = () => {
             {/* Content on top of background */}
             <div className="relative z-10 flex flex-col w-full h-full px-8 py-5 2xl:px-12 2xl:py-7">
                 <div className="h-[23%]"><Header gold={gold} displayBidOrBuy={displayBidOrBuy} /></div>
-                <div className="h-[58%]"><MidSection /></div>
+                <div className="h-[58%]">
+                    <MidSection
+                        gold={gold}
+                        silver={silver}
+                        commodities={commodities}
+                        spread={spread} />
+                </div>
                 <div className="h-[20%]"><Footer ratio={ratio} /></div>
             </div>
         </div>
