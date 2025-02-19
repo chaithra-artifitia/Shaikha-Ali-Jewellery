@@ -85,6 +85,17 @@ const getLiveValueTypeForDisplay = async () => {
     }
 };
 
+//@desc Get currency conversion
+const getConversionValue = async (base) => {
+    try {
+        const data = await axios.get(`${host}/getConversionValue/${base}`);
+        return data;
+    } catch (error) {
+        return error?.response?.data.message || "Failed to get currency conversion";
+    }
+};
+
+
 //@desc Get banners
 const findBanners = async () => {
     try {
@@ -103,6 +114,7 @@ export {
     allNewses,
     getRatio,
     getLiveValueTypeForDisplay,
+    getConversionValue,
     getGoldPriceNews,
     findBanners,
     getAdminProfile

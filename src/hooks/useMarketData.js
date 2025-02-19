@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCommodities, getSpread, getRatio, getLiveValueTypeForDisplay } from "../helpers/axiosService";
+import { getCommodities, getSpread, getRatio, getLiveValueTypeForDisplay, getConversionValue } from "../helpers/axiosService";
 
 const useMarketData = () => {
     const [commodities, setCommodities] = useState([]);
@@ -8,6 +8,10 @@ const useMarketData = () => {
     const [displayBidOrBuy, setDisplayBidOrBuy] = useState({
         bidOrBuy: "Bid",
         askOrSell: "Ask",
+    });
+    const [conversionRate, setConversionRate] = useState({
+        base_code: "",
+        conversion_rate: null, // Example key, adjust based on your actual data
     });
 
 
@@ -22,6 +26,10 @@ const useMarketData = () => {
                 const spreadRes = await getSpread();
                 setSpread(spreadRes);
 
+                const conversionRes = await getConversionValue("USD");
+                setConversionRate(conversionRes?.data);
+
+
                 const ratioRes = await getRatio();
                 setRatio(ratioRes?.data || {});
 
@@ -35,7 +43,7 @@ const useMarketData = () => {
         fetchMarketData();
     }, []);
 
-    return { commodities, spread, ratio, displayBidOrBuy };
+    return { commodities, spread, ratio, displayBidOrBuy, conversionRate };
 };
 
 export default useMarketData;

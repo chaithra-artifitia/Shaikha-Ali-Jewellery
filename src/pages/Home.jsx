@@ -22,7 +22,7 @@ const Home = () => {
 
     const { socket } = useSocketConnection();
     const { adminData, isBlocked, isExpired } = useAdminData();
-    const { commodities, spread, ratio, displayBidOrBuy } = useMarketData();
+    const { commodities, spread, ratio, displayBidOrBuy, conversionRate } = useMarketData();
 
     //@desc Listen for GOLD rate changes
     useEffect(() => {
@@ -77,7 +77,8 @@ const Home = () => {
                         gold={gold}
                         silver={silver}
                         commodities={commodities}
-                        spread={spread} />
+                        spread={spread}
+                        conversionRate={conversionRate} />
                 </div>
                 <div className="h-[20%]"><Footer ratio={ratio} /></div>
             </div>
