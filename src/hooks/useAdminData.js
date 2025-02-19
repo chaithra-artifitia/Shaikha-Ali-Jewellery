@@ -8,6 +8,8 @@ const useAdminData = () => {
 
     useEffect(() => {
         const fetchAdminProfile = async () => {
+
+            //@desc Get admin profile
             const res = await getAdminProfile();
             setAdminData(res);
 

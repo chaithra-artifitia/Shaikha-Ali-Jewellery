@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer";
 import useSocketConnection from "../hooks/useSocketConnection";
 import useAdminData from "../hooks/useAdminData";
 import useMarketData from "../hooks/useMarketData";
+import useAdminBasedData from "../hooks/useAdminBasedData";
 
 const Home = () => {
 
@@ -22,7 +23,8 @@ const Home = () => {
 
     const { socket } = useSocketConnection();
     const { adminData, isBlocked, isExpired } = useAdminData();
-    const { commodities, spread, ratio, displayBidOrBuy, conversionRate } = useMarketData();
+    const { spread, displayBidOrBuy, news, goldNews, banners } = useAdminBasedData()
+    const { commodities, ratio, conversionRate } = useMarketData();
 
     //@desc Listen for GOLD rate changes
     useEffect(() => {
@@ -80,7 +82,14 @@ const Home = () => {
                         spread={spread}
                         conversionRate={conversionRate} />
                 </div>
-                <div className="h-[20%]"><Footer ratio={ratio} /></div>
+                <div className="h-[20%]">
+                    <Footer
+                        ratio={ratio}
+                        adminData={adminData}
+                        news={news}
+                        goldNews={goldNews}
+                        banners={banners} />
+                </div>
             </div>
         </div>
     );
