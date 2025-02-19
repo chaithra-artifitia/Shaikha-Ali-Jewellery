@@ -19,7 +19,15 @@ export default {
         },
       },
       colors: {
-        mid_yellow: "#D9B450",
+        yellow: "#C09B41",
+        mid_yellow: "#CDA84D",
+        dark_green: "#0E2529",
+        red: "#CB212C",
+        light_red: "#DB5C5B",
+        dark_sky: "#336067",
+        dark: "#0A1C1F",
+        blue:"#1982CF",
+        light_blue:"#3DA1EA"
       },
     },
   },
