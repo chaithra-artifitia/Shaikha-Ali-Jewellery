@@ -26,3 +26,31 @@ body {
 .table-wrapper tbody::-webkit-scrollbar {
     display: none;
 }
+
+
+/* antd custom styles  */
+.custom-ant-modal .ant-modal-content {
+    background-color: black !important;
+    color: white;
+    border-radius: 12px;
+  }
+  
+  /* Customize the close button */
+  .custom-ant-modal .ant-modal-close {
+    color: white !important;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2); 
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+  
+  .custom-ant-modal .ant-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3); 
+  }
+  
