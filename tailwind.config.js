@@ -11,6 +11,7 @@ export default {
       },
       animation: {
         marquee: "marquee 95s linear infinite",
+        marquee1: "marquee 20s linear infinite",
       },
       keyframes: {
         marquee: {
@@ -24,10 +25,11 @@ export default {
         dark_green: "#0E2529",
         red: "#CB212C",
         light_red: "#DB5C5B",
+        mid_red: "#F33B37",
         dark_sky: "#336067",
         dark: "#0A1C1F",
-        blue:"#1982CF",
-        light_blue:"#3DA1EA"
+        blue: "#1982CF",
+        light_blue: "#3DA1EA"
       },
     },
   },

@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
-import NoInternet from './components/Common/NoInternet';
-import Home from './pages/Home';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Home from "./pages/Home";
+import NoInternet from "./components/Warnings/NoInternet";
+import Space404Page from "./components/Warnings/Space404Page";
+
 function App() {
   const [status, setStatus] = useState(true);
+
   useEffect(() => {
     function changeStatus() {
       setStatus(navigator.onLine);
@@ -15,14 +19,15 @@ function App() {
     };
   }, []);
 
+  if (!status) return <NoInternet />; // Show NoInternet component when offline
+
   return (
-    <>
-      {status ? (
-        <Home />
-      ) : (
-        <NoInternet/>
-      )}
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Space404Page />} />
+      </Routes>
+    </Router>
   );
 }
 
